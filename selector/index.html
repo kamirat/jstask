@@ -17,24 +17,7 @@
   }
   </style>
 
-  <script>
-    // ここに JavaScript を書く
-    $(function(){
-      $("#area2").css("border","5px solid #ccc");
 
-      $(".square").css("background-color","#ccccff");
-
-      $("[name=name]").attr("value","宿題さん");
-      $("[name=kana]").css({"background-color":"#ccccff", "border":"2px solid #ff3333"});
-      $("[name=address]").attr("disabled",true);
-      $("[name=check]").prop("checked", true);
-
-      $("#container > div:nth-child(3)").css("border","5px solid #ccc");
-
-      $("div.square2").css("background-color","#ccccff");
-      });
-
-  </script>
 </head>
 <body>
   <div id="area1"></div>
@@ -80,6 +63,35 @@
   <div class="label-box" data-label="label3"></div>
   <div class="label-box" data-label="label4"></div>
 
+  <script>
+    // ここに JavaScript を書く
+    $(function(){
+      $("#area2").css("border","5px solid #ccc");
 
+      $(".square").css("background-color","#ccccff");
+
+      $("[name=name]").val("宿題さん");
+      $("[name=kana]").css({"background-color":"#ffcccc", "border":"2px solid #ff3333"});
+      $("[name=address]").attr("disabled",true);
+      $("[name=check]").prop("checked", true);
+
+      $("#container div").eq(2).css("border","5px solid #ccc");
+
+      $("div.square2").css("background-color","#ccccff");
+
+      $(".label-box").each(function(i, elem) {
+      // console.log(i + ': ' + $(elem).text());
+      // console.log($(elem).text());
+      $(elem).text($(elem).attr("data-label"));
+      });
+
+      function test(){
+        alert("test");
+      };
+      $("#area2").on('click', test);
+
+    });
+
+  </script>
 </body>
 </html>

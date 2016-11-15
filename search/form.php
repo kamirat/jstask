@@ -12,6 +12,7 @@ $prefectures = array(
   14 => "神奈川県",
 );
 
+
 // 観光スポットデータ
 //   name   : スポットの名前
 //   detail : スポットの説明
@@ -92,7 +93,7 @@ $places = array(
   ),
 );
 
-// 選択された都道府県のコード
+//選択された都道府県のコード
 $pref ="";
 if (isset($_POST["pref"]) && isset($prefectures[$_POST["pref"]])){
    $pref = $_POST['pref'];
@@ -104,15 +105,8 @@ if (isset($_POST["pref"]) && isset($prefectures[$_POST["pref"]])){
 <head>
   <meta charset="utf-8" />
   <title>関東地方の観光スポット検索</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script>
-    $(function(){
-        jQuery(".form-group").change(function(){
-            alert(jQuery(this).val());
-            jQuery(".form-group").submit();
-        });
-      });
-</script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
   <style>
     /*
@@ -136,7 +130,7 @@ if (isset($_POST["pref"]) && isset($prefectures[$_POST["pref"]])){
 <body>
   <h1>関東地方の観光スポット検索</h1>
   <div class="container">
-    <form class="form-inline" action="form.php" method="post">
+    <form class="form-inline" action="form2.php" method="post">
       <div class="form-group">
          <select name="pref" class="form-control">
           <OPTION value="">選択してください</OPTION>
@@ -145,38 +139,181 @@ if (isset($_POST["pref"]) && isset($prefectures[$_POST["pref"]])){
           <?php endforeach ?>
           </select>
       </div>
-      <!-- <button class="btn btn-primary btn-sm" type="submit"> 検 索 </button> -->
+      <input class="btn btn-primary btn-sm" type="button" value="検索">
     </form>
 
+  <?php if (isset($places[$pref])): ?>
+      <p class="search-result"><?php echo $prefectures[$pref];?>の観光スポットは <?php echo count($places[$pref]);?> 件見つかりました。</p>
 
+  <?php else: ?>
+        <p class="search-result"><?php echo $prefecture[$pref];?>の観光スポットは見つかりませんでした｡</p>
 
-<?php if (isset($places[$pref])): ?>
-    <p class="search-result"><?php echo $prefectures[$pref];?>の観光スポットは <?php echo count($places[$pref]);?> 件見つかりました。</p>
+  <?php endif ?>
 
-<?php foreach ($places[$pref] as $place): ?>
+        <div class="spot_tochigi" style="display: none;">
+          <div class="media">
+            <div class="media-left">
 
+            <img src="place_4.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">西洋の邸宅</h4>
+            西洋の邸宅はとても良い所です。西洋の邸宅はとても良い所です。
+                   西洋の邸宅はとても良い所です。西洋の邸宅はとても良い所です。
+                   西洋の邸宅はとても良い所です。西洋の邸宅はとても良い所です。
+                   西洋の邸宅はとても良い所です。西洋の邸宅はとても良い所です。
+            </div>
+          </div>
+        </div>
 
-    <div class="media">
-      <div class="media-left">
+        <div class="spot_gunma" style="display: none;">
+        <div class="media">
+          <div class="media-left">
 
-        <img src="<?php echo $place['image']; ?>" class="media-object img-thumbnail">
+            <img src="place_5.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">赤い門</h4>
+            赤い門はとても良い所です。赤い門はとても良い所です。
+                   赤い門はとても良い所です。赤い門はとても良い所です。
+                   赤い門はとても良い所です。赤い門はとても良い所です。
+                   赤い門はとても良い所です。赤い門はとても良い所です。
+              </div>
+            </div>
+          </div>
+
+        <div class="spot_tokyo" style="display: none;">
+        <div class="media">
+          <div class="media-left">
+
+            <img src="place_1.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">緑の階段</h4>
+            緑の階段はとても良い所です。緑の階段はとても良い所です。
+                   緑の階段はとても良い所です。緑の階段はとても良い所です。
+                   緑の階段はとても良い所です。緑の階段はとても良い所です。
+                   緑の階段はとても良い所です。緑の階段はとても良い所です。
+              </div>
+            </div>
+
+        <div class="media">
+          <div class="media-left">
+
+            <img src="place_6.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">雷門</h4>
+            雷門はとても良い所です。雷門はとても良い所です。雷門はとても良い所です。
+                   雷門はとても良い所です。雷門はとても良い所です。雷門はとても良い所です。
+                   雷門はとても良い所です。雷門はとても良い所です。
+          </div>
+        </div>
+
+        <div class="media">
+          <div class="media-left">
+
+            <img src="place_7.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">東京タワー</h4>
+            東京タワーはとても良い所です。東京タワーはとても良い所です。
+                   東京タワーはとても良い所です。東京タワーはとても良い所です。
+                   東京タワーはとても良い所です。東京タワーはとても良い所です。
+                   東京タワーはとても良い所です。東京タワーはとても良い所です。
+          </div>
+        </div>
       </div>
-      <div class="media-body">
-        <h4 class="media-heading"><?php echo $place['name']; ?></h4>
-        <?php echo $place['detail']; ?>
 
+        <div class="spot_kanagawa" style="display: none;">
+        <div class="media">
+          <div class="media-left">
 
+            <img src="place_2.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">日本の城</h4>
+            日本の城はとても良い所です。日本の城はとても良い所です。
+                   日本の城はとても良い所です。日本の城はとても良い所です。
+                   日本の城はとても良い所です。日本の城はとても良い所です。
+                   日本の城はとても良い所です。日本の城はとても良い所です。
+          </div>
+        </div>
+
+        <div class="media">
+          <div class="media-left">
+
+            <img src="place_3.jpg" class="media-object img-thumbnail">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">旅館の部屋</h4>
+            旅館の部屋はとても良い所です。旅館の部屋はとても良い所です。
+                   旅館の部屋はとても良い所です。旅館の部屋はとても良い所です。
+                   旅館の部屋はとても良い所です。旅館の部屋はとても良い所です。
+                   旅館の部屋はとても良い所です。旅館の部屋はとても良い所です。
+          </div>
+        </div>
       </div>
-    </div>
-<?php endforeach ?>
-<?php else: ?>
-      <p class="search-result"><?php echo $prefectures[$pref];?>の観光スポットは見つかりませんでした｡</p>
 
-<?php endif ?>
 
   </div>
   <hr>
   <footer>&copy; 観光スポット検索協会 </footer>
+
+    <script>
+    // $(function(){
+    //     $("input[type=button]").click(function(){
+    //         $(".form-inline").submit();
+    //     });
+    // });
+    $(".form-control").change(function() {
+      // var form_val = $(".form-control").val();
+      // if(form_val == "9") {
+      //   $('.tochigi').css('display', 'block');
+      // }else if(form_val == "10") {
+      //   $('.gunma').css('display', 'block');
+      // }else if(form_val == "13") {
+      //   $('.tokyo').css('display', 'block');
+      // }else if(form_val == "14") {
+      //   $('.kanagawa').css('display', 'block');
+      // }
+
+      /* 選択したselectボックスのvalue値を取得して、変数valに入れる */
+        var val = $(this).val();
+        /* 変数valの値ごとに、処理をswichでふりわけ */
+        switch (val) {
+            case '9':
+                /* #box1を表示 */
+                $('.spot_tochigi').show();
+                /* divのidに「box」を含むid名がついているもので、box1じゃないものは非表示 */
+                $('div[class^="spot"]:not(".spot_tochigi")').hide();
+            break;
+            case '10':
+                /* #box2を表示 */
+                $('.spot_gunma').show();
+                /* divのidに「box」を含むid名がついているもので、box2じゃないものは非表示 */
+                $('div[class^="spot"]:not(".spot_gunma")').hide();
+            break;
+            case '13':
+                /* #box2を表示 */
+                $('.spot_tokyo').show();
+                /* divのidに「box」を含むid名がついているもので、box2じゃないものは非表示 */
+                $('div[class^="spot"]:not(".spot_tokyo")').hide();
+            break;
+            case '14':
+                /* #box2を表示 */
+                $('.spot_kanagawa').show();
+                /* divのidに「box」を含むid名がついているもので、box2じゃないものは非表示 */
+                $('div[class^="spot"]:not(".spot_kanagawa")').hide();
+            break;
+            /* caseで設定した以外の処理 */
+            default:
+                /* divのidに「box」を含むid名がついているものは非表示 */
+                $('div[class^="spot"]').hide();
+        }
+    });
+
+  </script>
 </body>
 
 
